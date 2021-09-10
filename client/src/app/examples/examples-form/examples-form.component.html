@@ -1,0 +1,52 @@
+<div class="card">
+  <div class="card-body">
+    <form class="mb-3" *ngIf="!loading && exampleForm != null; else loadingView" novalidate [formGroup]="exampleForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-12">
+          <!-- Name -->
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="name" />
+            <small *ngIf="submitted && exampleForm.get('name').hasError('required')" class="text-danger">
+              Name is required
+            </small>
+          </div>
+          <!-- End Name-->
+
+          <!-- Description -->
+          <div class="form-group">
+            <label for="name">Description</label>
+            <textarea name="description" class="form-control" id="description" placeholder="Enter description" formControlName="description"
+              rows="2"></textarea>
+            <small *ngIf="submitted && exampleForm.get('name').hasError('required')" class="text-danger">
+              Description is required
+            </small>
+          </div>
+          <!-- End description-->
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" *ngIf="isNew">Create</button>
+          </div>
+
+          <!-- Error -->
+          <div class="row" *ngIf="error">
+            <div class="col">
+              <div class="alert alert-danger">{{ error }}</div>
+            </div>
+          </div>
+          <!-- End Error -->
+        </div>
+        <div class="col-12"  *ngIf="!isNew">
+          <button type="submit" class="btn btn-primary mr-2">Update</button>
+          <button type="button" *ngIf="!isNew" class="btn btn-danger mr-2" [swal]="{ title: 'Delete &ldquo;' + example.name + '&rdquo; system?', text: '&nbsp;', text: 'This cannot be undone.', type: 'warning', showCancelButton: true, confirmButtonText: 'Yes, delete it'}"
+            (confirm)="remove()">Delete</button>
+          <button type="button" *ngIf="!isNew" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<ng-template #loadingView>
+  <ai-loading class="left-align"></ai-loading>
+</ng-template>

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col">
+     <!-- Card -->
+    <div class="card" >
+      <div class="card-header">Dashboard</div>
+      <div class="card-body" style="min-height: 300px;">
+        <strong>Current User:</strong>
+        <p>{{ currentUser | json }}</p>
+        <strong class="test">Current Organization:</strong>
+        <p>
+          {{ currentOrganization | json }}
+        </p>
+      </div>
+      <div class="themed-dark">
+        Text themed from component dark scss
+      </div>
+    </div>
+    <!-- End Card -->
+  </div>
+</div>

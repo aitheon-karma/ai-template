@@ -1,0 +1,9 @@
+:host.no-border {
+    .card {
+        box-shadow: none;
+        border: none;
+    }
+    .card-body {
+        padding: 0;
+    }
+}
